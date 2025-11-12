@@ -16,13 +16,14 @@ export default function TaskBoard() {
     const [tasks, setTasks] = useState([defaultTask]);
     const [showAddTaskModal, setAddTaskModal] = useState(false);
 
-    function handleAddTask(){
-      setAddTaskModal(true);
-      // console.log('Task Adding...');
+    function handleAddTask(newTask){
+      // console.log('Task Adding...', newTask);
+      setTasks([...tasks, newTask]);
+      setAddTaskModal(false);
     }
   return (
     <section className="mb-20" id="tasks">
-      { showAddTaskModal && <AddTaskModal /> }
+      { showAddTaskModal && <AddTaskModal onSave={handleAddTask} /> }
       <div className="container">
         {/* <!-- Search Box --> */}
         <div className="p-2 flex justify-end">
@@ -31,7 +32,7 @@ export default function TaskBoard() {
         {/* <!-- Search Box Ends --> */}
         <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
           {/* task action */}
-          <TaskActions onAddClick={handleAddTask}/>
+          <TaskActions onAddClick={() => setAddTaskModal(true)}/>
           <TaskList tasks={tasks} />
         </div>
       </div>
