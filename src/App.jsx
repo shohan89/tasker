@@ -1,10 +1,11 @@
+import Header from "./Header"
 
 
 function App() {
 
   return (
     <>
-      <h1>Welcome to Tasker</h1>
+      <Header />
     </>
   )
 }
