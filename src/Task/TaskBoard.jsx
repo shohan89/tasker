@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AddTaskModal from "./AddTaskModal";
 import SearchTask from "./SearchTask";
 import TaskActions from "./TaskActions";
 import TaskList from "./TaskList";
@@ -21,6 +22,7 @@ export default function TaskBoard() {
     }
   return (
     <section className="mb-20" id="tasks">
+      { showAddTaskModal && <AddTaskModal /> }
       <div className="container">
         {/* <!-- Search Box --> */}
         <div className="p-2 flex justify-end">
