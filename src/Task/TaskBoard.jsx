@@ -18,8 +18,6 @@ export default function TaskBoard() {
   const [taskToEdit, setTaskToEdit] = useState(null);
 
   function handleAddTask(newTask, isAdd) {
-    // console.log('Task Adding...', newTask);
-    // setTasks([...tasks, newTask]);
     if (isAdd) {
       setTasks([...tasks, newTask]);
     } else {
@@ -39,10 +37,14 @@ export default function TaskBoard() {
     setTaskToEdit(task);
     setAddTaskModal(true);
   }
+  function handleClose(){
+    setAddTaskModal(false);
+    setTaskToEdit(null);
+  }
   return (
     <section className="mb-20" id="tasks">
       {showAddTaskModal && (
-        <AddTaskModal onSave={handleAddTask} taskToEdit={taskToEdit} />
+        <AddTaskModal onSave={handleAddTask} taskToEdit={taskToEdit} handleClose={handleClose} />
       )}
       <div className="container">
         {/* <!-- Search Box --> */}
